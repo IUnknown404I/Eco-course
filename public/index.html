@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Образовательная платформа</title>
+<!--    <link rel="shortcut icon" type="image/png/ico" href="./icon.ico" />-->
+<!--    <link rel="shortcut icon" type="image/png/ico" href="https://pbs.twimg.com/media/DaFvlO2VQAAOPwW.jpg" />-->
+
+    <script id="vertexShader" type="shader-code">
+      varying vec2 vertexUV;
+      varying vec3 vertexNormal;
+
+      void main() {
+          vertexUV = uv;
+          vertexNormal = normalize(normalMatrix * normal);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    </script>
+    <script id="fragmentShader" type="shader-code">
+      uniform sampler2D globeTexture;
+
+      varying vec2 vertexUV;
+      varying vec3 vertexNormal;
+
+      void main() {
+
+          float intensity = 1.05 - dot(vertexNormal, vec3(0.0, 0.0, 1.0));
+          vec3 atmosphere = vec3(0.3, 0.6, 1.05) * pow(intensity, 1.5);
+
+          gl_FragColor = vec4(atmosphere + texture2D(globeTexture, vertexUV).xyz, 1.0);
+      }
+    </script>
+    <script id="atmosphereVertex" type="shader-code">
+      varying vec3 vertexNormal;
+
+      void main() {
+          vertexNormal = normalize(normalMatrix * normal);
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 0.9);
+      }
+    </script>
+    <script id="atmosphereFragment" type="shader-code">
+      uniform sampler2D globeTexture;
+
+      varying vec3 vertexNormal;
+
+      void main() {
+          float intensity = pow(0.55 - dot(vertexNormal, vec3(0, 0, 1.0)), 2.0);
+
+          gl_FragColor = vec4(0.3, 0.6, 1.0, 1.0) * intensity;
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+
+</html>

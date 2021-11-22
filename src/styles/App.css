@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body, .head {
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.App {
+    width: 100%;
+    min-height: 100vh;
+    background: #F5FEFF;
+    /*background: azure;*/
+}
+
+.opacity {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 10;
+}
+
+.alertPane-enter {
+    transform: translateY(-50px) scale(0.5) ;
+    opacity: 0.1;
+}
+
+.alertPane-enter-active {
+    transition: all 600ms ease-in;
+    opacity: 0.9;
+    transform: translateY(0) scale(1);
+}
+
+.alertPane-exit {
+    transform:  translateX(0) scale(1);
+    opacity: 0.9;
+}
+
+.alertPane-exit-active {
+    transition: all 600ms ease-out;
+    opacity: 0.1;
+    transform: translateX(250px) scale(0.5);
+}
+
+.tests-list {
+    width: 90%;
+    border: 1px solid darkslategrey;
+    margin: 40px auto;
+    padding: 15px 15px;
+    background: lightcyan; /*beige*/
+}
+
+.tests-list legend {
+    font-size: 18px;
+    color: black;
+    background: transparent;
+}
+
+.secret-container {
+
+}
