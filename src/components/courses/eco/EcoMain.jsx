@@ -277,7 +277,9 @@ const EcoMain = ({isPurposely}) => {
     }, [collapsed]);
 
     useEffect(() => {
-        if(!purposely) navigation();
+        if(!document.querySelector('.canvas_Earth')) {
+            navigation();
+        }
     }, [currentTitle]);
 
     useEffect(() => {
