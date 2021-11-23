@@ -155,6 +155,7 @@ const EcoMain = ({isPurposely}) => {
         const auth = localStorage.getItem('auth');
         const authTime = localStorage.getItem('authTime');
         if(auth && authTime && ((Date.now() - parseInt(authTime)) <= 1000*60*60*24*14)) {
+            localStorage.setItem('authTime', Date.now().toString());
             setPurposely(true);
         } else {
             localStorage.setItem('auth', '0');

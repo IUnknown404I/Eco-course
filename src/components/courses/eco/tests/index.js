@@ -375,7 +375,7 @@ const single = (question, answers, valid, id, finalize, userAnswers, setUserAnsw
                             <input
                                 type={"radio"}
                                 value={ans}
-                                name={ans}
+                                name={question}
                                 disabled={finalize}
                                 onClick={() => {
                                     let newUserAnswers = Object.assign(userAnswers);
@@ -386,8 +386,8 @@ const single = (question, answers, valid, id, finalize, userAnswers, setUserAnsw
                             <span style={
                                 finalize
                                     ? ans===valid
-                                    ? {color: 'forestgreen'}
-                                    : ans === userAnswers[id] && ans !== valid ? {color: 'red'} : {}
+                                        ? {color: 'forestgreen'}
+                                        : ans === userAnswers[id] && ans !== valid ? {color: 'red'} : {}
                                     : {}
                             }
                             >{ans}</span>
