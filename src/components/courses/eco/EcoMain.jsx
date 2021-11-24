@@ -193,9 +193,9 @@ const EcoMain = ({isPurposely}) => {
         if(location.search) {
             switch (location.search.split('=')[0]) {
                 case '?ch': {
-                    const newChap = location.search.split('ch=')[1][0];
-                    const newTheme = location.search.split('th=')[1][0];
-                    const newPage = location.search.split('p=')[1][0];
+                    const newChap = location.search.split('ch=')[1].split('&')[0];
+                    const newTheme = location.search.split('th=')[1].split('&')[0];
+                    const newPage = location.search.split('p=')[1];
 
                     const chapter = (newChap === '1')
                         ? new FirstChapter()
